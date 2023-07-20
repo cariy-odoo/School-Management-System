@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+    </record> 
+
+    <record id="school_tree_view" model="ir.ui.view">
+        <field name="name">school.student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+        <tree string="School Student"
+        decoration-danger ="admn_date &lt; current_date"
+        decoration-success ="admn_date == current_date"
+        decoration-muted = "admn_date &gt; current_date">
+
+            <field name="name"/>
+            <field name="class_id"/>
+            <field name="address"/>
+            <field name="admn_date"/>
+        </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Student -->  
+    <record id="school_form_view" model="ir.ui.view">
+        <field name="name">school.student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form string="Student">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="admn_code" />
+                            <field name="name" />
+                            <field name="class_id" />
+                            <field name="division" />
+                        </group>
+                        <group>
+                            <field name="dob" />
+                            <field name="age" />
+                            <field name="admn_date" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_search_view" model="ir.ui.view">
+        <field name="name">school.student.search</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <search string="Student">
+                <field name="name" />
+                <field name="class_id" />
+                <field name="dob" />
+            </search>
+        </field>
+    </record>
+
+
+    <menuitem id="school_menu" name="School" />
+    <menuitem id="school_exams_menu" parent="school_menu" name="School" action="action_student" sequence="6" />
+
+</odoo>

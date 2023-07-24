@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models, fields, api, _
 from datetime import date
 from dateutil.relativedelta import relativedelta
@@ -17,17 +15,18 @@ class School(models.Model):
     age = fields.Integer(string='Age', compute = '_compute_age')
     admn_date = fields.Date(string = 'Admn Date', default=fields.date.today())
     admn_code = fields.Char(string = 'Admn Code', copy=False, readonly=False, index=True, default = lambda self: _('New'))
+    officer_id = fields.Many2one('res.partner', string='Officer')
 
 
 
 
     @api.model
-    def create(self,vals):
+    def create(self,vals_list):
         """Function for creating sequnce"""
-        if vals.get('admn_code', 'New') == 'New':
-            vals['admn_code'] = self.env['ir.sequence'].next_by_code(
+        if vals_list.get('admn_code', 'New') == 'New':
+            vals_list['admn_code'] = self.env['ir.sequence'].next_by_code(
                 'school.student.sequence') or 'New'
-        result = super(School,self).create(vals)
+        result = super(School,self).create(vals_list)
         return result
     
     @api.onchange('name')

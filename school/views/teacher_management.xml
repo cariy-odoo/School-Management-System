@@ -1,0 +1,62 @@
+<?xml version ="1.0"?>
+
+    <odoo>
+        <!-- action -->
+        <record id="teacher_management_action" model="ir.actions.act_window">
+            <field name="name">Teacher Management</field>
+            <field name="res_model">teacher.management</field>
+            <!-- <field name="view_type">tree</field> -->
+            <field name="view_mode">tree,form</field>
+            <field name="help">This action opens the teacher management form.</field>
+        </record>
+
+        <!-- tree view -->
+        <record id="teacher_management_tree_view" model="ir.ui.view">
+            <field name="name">Teacher Management Tree</field>
+            <field name="model">teacher.management</field>
+            <field name="arch" type="xml">
+                <tree string="Teachers">
+                    <!-- <field name="teacher_id"/> -->
+                    <field name="teacher_full_name"/>
+                    <!-- <field name="last_name"/> -->
+                    <field name="email"/>
+                    <field name="subjects"/>
+                    <field name="experience"/>
+                    <field name="availability"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <record id="teacher_management_form_view" model="ir.ui.view">
+            <field name="name">Teacher Management Form</field>
+            <field name="model">teacher.management</field>
+            <field name="arch" type="xml">
+                <form string="Teacher">
+                    <sheet>
+                        <group>
+
+                            <!-- <field name="teacher_id"/> -->
+                            <field name="teacher_full_name"/>
+                            <!-- <field name="last_name"/> -->
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="address"/>
+                            <field name="birthday"/>
+                            <field name="gender"/>
+                            <field name="qualifications"/>
+                            <field name="subjects"/>
+                            <field name="experience"/>
+                            <field name="availability"/>
+                            <field name="notes"/>
+                            <!-- <field name="department"/> -->
+                            <!-- <field name="school"/> -->
+                            <!-- <field name="salary"/> -->
+                            <!-- <field name="contract_type"/> -->
+                            <!-- <field name="image"/> -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </odoo>

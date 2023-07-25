@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access.student,access_student,model_school_student,base.group_user,1,1,1,1
-access.school_items,access_school_items,model_school_items,base.group_user,1,1,1,1
+school.access_student_management,access_student_management,school.model_student_management,base.group_user,1,1,1,1
+school.access_teacher_management,access_teacher_management,school.model_teacher_management,base.group_user,1,1,1,1
+school.access_subject_management,access_subject_management,school.model_subject_management,base.group_user,1,1,1,1

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="action_student" model="ir.actions.act_window">
+    <record id="student_management_action" model="ir.actions.act_window">
         <field name="name">Student</field>
-        <field name="res_model">school.student</field>
+        <field name="res_model">student.management</field>
         <field name="view_mode">tree,form,calendar</field>
     </record>
 
     <record id="school_tree_view" model="ir.ui.view">
-        <field name="name">school.student.tree</field>
-        <field name="model">school.student</field>
+        <field name="name">student.management.tree</field>
+        <field name="model">student.management</field>
         <field name="arch" type="xml">
             <tree string="School Student"
                 decoration-danger ="admn_date &lt; current_date"
                 decoration-success ="admn_date == current_date"
-                decoration-muted = "admn_date &gt; current_date"
-            >
+                decoration-muted = "admn_date &gt; current_date">
 
                 <field name="name"/>
                 <field name="class_id"/>
@@ -26,8 +25,8 @@
 
     <!-- Form View for Student -->
     <record id="school_form_view" model="ir.ui.view">
-        <field name="name">school.student.form</field>
-        <field name="model">school.student</field>
+        <field name="name">student.management.form</field>
+        <field name="model">student.management</field>
         <field name="arch" type="xml">
             <form string="Student">
                 <sheet>
@@ -51,8 +50,8 @@
     </record>
 
     <record id="school_search_view" model="ir.ui.view">
-        <field name="name">school.student.search</field>
-        <field name="model">school.student</field>
+        <field name="name">student.management.search</field>
+        <field name="model">student.management</field>
         <field name="arch" type="xml">
             <search string="Student">
                 <field name="name" />
@@ -65,8 +64,8 @@
     <!-- calendar view -->
 
     <record id="school_calendar_view" model="ir.ui.view">
-        <field name="name">school.student.calender</field>
-        <field name="model">school.student</field>
+        <field name="name">student.management.calender</field>
+        <field name="model">student.management</field>
         <field name="arch" type="xml">
             <calendar string="School" date_start = "admn_date" mode="month" color="name" event_open_popup="true" quick_add = "False">
                 <field name="name" />
@@ -75,8 +74,16 @@
         </field>
     </record>
 
-
-    <menuitem id="school_menu" name="School" />
-    <menuitem id="school_exams_menu" parent="school_menu" name="School" action="action_student" sequence="6" />
+    <menuitem id="menu_school" name= "School">
+        <menuitem id="student_menu" name="Student">
+            <menuitem id="student_management_menu" name="Student Management" action="student_management_action"/>
+        </menuitem>
+        <menuitem id="menu_teacher" name="Teacher">
+            <menuitem id="teacher_management_menu" name="Teacher Management" action="teacher_management_action"/>
+        </menuitem>
+        <menuitem id="menu_subject" name="Subject">
+            <menuitem id="subject_management_menu" name="Subject Management" action="subject_management_action"/>
+        </menuitem>
+    </menuitem>
 
 </odoo>

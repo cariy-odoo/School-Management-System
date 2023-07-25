@@ -10,8 +10,9 @@
 
     'data':[
      'security/ir.model.access.csv',
-     'views/school_items.xml',
-     'views/school.xml',
+     'views/student_management.xml',
+     "views/teacher_management.xml",
+     "views/subject_management.xml",
      
     ],
 

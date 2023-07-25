@@ -5,7 +5,8 @@ from odoo.exceptions import ValidationError
 
 
 class School(models.Model):
-    _name = 'school.student'
+    _name = 'student.management'
+    _description = 'Student Management'
 
     name = fields.Many2one('res.partner', string='Student')
     address = fields.Char(string='Address')
@@ -25,7 +26,7 @@ class School(models.Model):
         """Function for creating sequnce"""
         if vals_list.get('admn_code', 'New') == 'New':
             vals_list['admn_code'] = self.env['ir.sequence'].next_by_code(
-                'school.student.sequence') or 'New'
+                'student.management.sequence') or 'New'
         result = super(School,self).create(vals_list)
         return result
     
